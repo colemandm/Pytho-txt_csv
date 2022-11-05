@@ -1,6 +1,4 @@
-#Final Project CIS-3680
-#@Author's Dylan Coleman, Bennett Gungor, Jeffrey Cansler
- #Jeff Starts
+#This project converts a .txt file from the NC Judicial Court Reports into a csv where the data is easily read and understood.
 import csv
  
 END_OF_HEADER = "*" * 25
