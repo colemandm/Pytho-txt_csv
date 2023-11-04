@@ -101,7 +101,7 @@ def main():
     filename = input("Enter the filename: ")
     sub = filename + ".txt"
     infile = open(sub, 'r')
-    out_file = open ("NewFile3.csv", 'w')
+    out_file = open ("NewFile.csv", 'w')
     writer = csv.DictWriter(out_file, FIELDS)
     writer.writeheader()
  
