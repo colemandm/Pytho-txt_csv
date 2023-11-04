@@ -5,7 +5,7 @@ To use this script, follow these steps:
     Make sure you have Python installed on your computer.
     Place the .txt file from the NC Judicial Court Reports in the same directory as the script.
     Run the script and enter the filename when prompted.
-    The script will process the .txt file and generate a new CSV file named "NewFile3.csv" in the same directory.
+    The script will process the .txt file and generate a new CSV file named "NewFile.csv" in the same directory.
 
 The generated CSV file will have the following fields:
 
