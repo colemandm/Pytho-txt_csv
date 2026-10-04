@@ -1,41 +1,36 @@
-This project is a Python script that converts a .txt file from the NC Judicial Court Reports into a CSV file where the data is easily read and understood. The script takes in a .txt file as input and generates a new CSV file.
+NC Judicial Report Parser (.TXT to .CSV)
 
-To use this script, follow these steps:
+A robust Python utility designed to parse unstructured, legacy text flat-files from North Carolina Judicial Court Reports and transform them into clean, structured, and machine-readable CSV datasets.
 
-    Make sure you have Python installed on your computer.
-    Place the .txt file from the NC Judicial Court Reports in the same directory as the script.
-    Run the script and enter the filename when prompted.
-    The script will process the .txt file and generate a new CSV file named "NewFile.csv" in the same directory.
+Government and legacy enterprise systems frequently output multi-page reports in rigid, fixed-width text formats (`.txt`) that are difficult to query or analyze. This script acts as a data pipeline parser that tracks state across file blocks, extracts complex multi-line entities (such as court headers, defendant metadata, pleas, and judgments), and maps them into a uniform tabular structure.
 
-The generated CSV file will have the following fields:
+Features
+- Stateful Line-by-Line Parsing:** Utilizes custom conditional routing and state-tracking loops to handle multi-line records where data spans across various nested sections.
+- Defensive Error Handling:** Includes robust string boundary checking (`len()` guards) to prevent index-out-of-bounds exceptions when parsing malformed or truncated text lines.
+- Structured Dictionary Mapping:** Leverages Python's `csv.DictWriter` to ensure keys match a strict, predefined schema, maintaining clean column alignment in the output file.
+- Exception Safety:** Gracefully handles missing files and encoding edge cases with descriptive console feedback.
 
-    RunDate
-    CourtDate
-    CourtTime
-    CourtRoom
-    Location
-    DockNo
-    FileNo
-    CaseClassif
-    OfficerName
-    DefendName
-    AlsoKnownAs
-    Verdict
-    Fingerprint
-    Continue
-    BondAmount
-    Crime
-    Plea
-    Attorney
-    ClassOffense
-    Points
-    OffenseLevel
-    DomesticViolence
-    AssistantDirectorAttorney
-    Spanish
+Project Structure
+```
+├── .TXT to .CSV.py    # Main script containing parsing logic and file stream handlers
+└── README.md          # Project documentation
+```
 
-Each row in the CSV file represents a record from the NC Judicial Court Reports, with information about the run date, court date, court time, court room, location, defendant details, offense details, and other relevant information.
+Requirements
+- Python 3.x (No external third-party dependencies required; built entirely with standard libraries).
 
-The script uses various functions to process different sections of the .txt file and extract the required information. It handles different types of headers, defendant information, offense information, and other relevant data.
+Usage
+- Ensure your target text file is placed in the same directory as the script.
 
-Please note that this script is specifically designed for the NC Judicial Court Reports in a specific format. If you want to use it for other purposes or with different file formats, you may need to make modifications accordingly.
+Run the script from your terminal:
+-> python ".TXT to .CSV.py"
+Enter the filename when prompted (without the .txt extension).
+
+The script will process the records and generate a clean NewFile.csv in the working directory.
+
+Output Schema
+- The generated CSV maps out the following extracted fields:
+
+Administrative: RunDate, CourtDate, CourtTime, CourtRoom, Location
+Defendant Info: DockNo, FileNo, CaseClassif, OfficerName, DefendName, AlsoKnownAs, Fingerprint, Continue, Attorney
+Offense & Judgement: Verdict, BondAmount, Crime, Plea, ClassOffense, Points, OffenseLevel, DomesticViolence, AssistantDirectorAttorney, Spanish
